@@ -1,3 +1,6 @@
+#AUTHOR: DAN ODIN
+#DATE: 04-2023
+
 import os
 from turtle import Turtle, Screen, Shape
 from random import randint
