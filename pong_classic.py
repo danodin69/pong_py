@@ -157,6 +157,11 @@ def r_off():
     global paddle_R_move_direction
     paddle_R_move_direction = 0
 
+def restart():
+    global score_L, score_R
+    score_L, score_R = 0, 0
+    frame_rate = 42
+
 
 screen.onkeypress(l_up, "w")
 screen.onkeypress(l_down, "z")
@@ -164,6 +169,7 @@ screen.onkeypress(r_up, "Up")
 screen.onkeypress(r_down, "Down")
 screen.onkeyrelease(l_off, "w")
 screen.onkeyrelease(l_off, "z")
+screen.onkey(restart, "R")
 screen.onkeyrelease(r_off, "Up")
 screen.onkeyrelease(r_off, "Down")
 screen.listen()
@@ -299,7 +305,7 @@ def game_over_checker():
         game_over_display.penup()
         game_over_display.hideturtle()
         game_over_display.goto(0, 0)
-        game_over_display.write("WE HAVE A WINNER! \n\n\n{} IS THE PONG CHAMPION!".format(winner), align="center",
+        game_over_display.write(f"WE HAVE A WINNER! \n\n\n{winner} IS THE PONG CHAMPION! \n\n Click on 'R' key to restart the game.", align="center",
                                 font=("Arial", 20, "bold"))
 
 """
