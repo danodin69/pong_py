@@ -1,0 +1,42 @@
+import random
+
+soldier = [9, 7, 5]
+
+
+def reshuffle_soldier_deck():
+    new_deck = []
+    counts = {9: 0, 7: 0, 5: 0}
+
+    for _ in range(6):
+        card = random.choice(soldier)
+        if counts[card] < get_max_allowed_count(card):
+            new_deck.append(card)
+            counts[card] += 1
+        else:
+            # If the maximum count is reached, choose another card
+            other_cards = [c for c in soldier if c != card]
+            other_card = random.choice(other_cards)
+            new_deck.append(other_card)
+            counts[other_card] += 1
+
+    return new_deck
+
+
+def get_max_allowed_count(card):
+    if card == 9:
+        return 2
+    elif card == 7:
+        return 3
+    elif card == 5:
+        return 4
+    else:
+        return 0
+
+
+soldier_deck = reshuffle_soldier_deck()
+
+soldier_card_final = ""
+for i, card in enumerate(soldier_deck, start=1):
+    soldier_card_final += f"SOLDIERS CARD {i}: {card}\n"
+
+print(soldier_card_final)
